@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<ChequebookRegistry.Models.UpcomingPayments>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -10,10 +12,49 @@
     <h1 class="display-4">Welcome to Chequebook Management</h1>
     <p>The source code is available at  <a href="https://github.com/DaedalosGR/ChequeBookRegistry" target="_blank">GitHub</a>.</p>
 </div>
-<div>
-    <canvas id="OwedPerMonth"></canvas>
-</div>
 
+<div class="row">
+    <div class="col-md-8">
+        <canvas id="OwedPerMonth"></canvas>
+    </div>
+    <div class="col-md-4">
+        <h2>
+            Upcoming Payments
+        </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PayeeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateDue)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PayeeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDue)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @section Scripts {
     <script>
@@ -33,19 +74,19 @@
         ];
 
         const data = {
-            labels : labels,
-            dataseets : [
+            labels: labels,
+            datasets: [
                 {
                     label: "Unpaid Cheques",
-                    backgroundColor: "rgb(255,99,132)",
-                    borderColor: "rgb(255,99,132)",
-                    data: [250,2340,1500,312,754,900,521,198,1700,675,234,524]
+                    backgroundColor: "rgb(0,0,102)",
+                    borderColor: "rgb(0,0,102)",
+                    data: [250, 2340, 1500, 312, 754, 900, 521, 198, 1700, 675, 234, 524]
                 }
             ]
         };
 
         const config = {
-            type: 'line',
+            type: 'bar',
             data: data,
             options: {}
         };

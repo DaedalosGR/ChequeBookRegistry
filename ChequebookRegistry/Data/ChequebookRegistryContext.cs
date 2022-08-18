@@ -19,5 +19,7 @@ namespace ChequebookRegistry.Data
         public DbSet<ChequebookRegistry.Models.Customers>? Customers { get; set; }
 
         public DbSet<ChequebookRegistry.Models.Payees>? Payees { get; set; }
+
+        public DbSet<ChequebookRegistry.Models.UpcomingPayments>? UpcomingPayments { get; set; }
     }
 }
