@@ -2,7 +2,60 @@
     ViewData["Title"] = "Home Page";
 }
 
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Chequebook Management</h1>
+    <p>The source code is available at  <a href="https://github.com/DaedalosGR/ChequeBookRegistry" target="_blank">GitHub</a>.</p>
 </div>
+<div>
+    <canvas id="OwedPerMonth"></canvas>
+</div>
+
+
+@section Scripts {
+    <script>
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
+
+        const data = {
+            labels : labels,
+            dataseets : [
+                {
+                    label: "Unpaid Cheques",
+                    backgroundColor: "rgb(255,99,132)",
+                    borderColor: "rgb(255,99,132)",
+                    data: [250,2340,1500,312,754,900,521,198,1700,675,234,524]
+                }
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const OwedPerMonth = new Chart(
+            document.getElementById('OwedPerMonth'),
+            config
+        );
+
+
+    </script>
+
+}

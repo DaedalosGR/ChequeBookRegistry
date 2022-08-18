@@ -52,8 +52,6 @@ namespace ChequebookRegistry.Controllers
         public IActionResult Create()
         {
             CreateViewModel model = new CreateViewModel();
-            //CustomerList model = new CustomerList();
-            //dynamic viewModel = new ExpandoObject();
             model.CustomersList = CustomersList();
             model.PayeesList = PayeesList();
             return View(model);
